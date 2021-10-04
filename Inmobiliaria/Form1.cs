@@ -16,6 +16,8 @@ namespace Inmobiliaria
         public CalcularInmueble()
         {
             InitializeComponent();
+
+            label1.Text = " ";
         }
 
        private GroupBox gpTipoInmueble1;
@@ -29,6 +31,7 @@ namespace Inmobiliaria
         int NroPiso;
         String direccion;
         Double superficie;
+        
         int Opcion;
         bool salir = false;
 
@@ -78,13 +81,6 @@ namespace Inmobiliaria
             if (!(textNroPiso.Text.EsNumero() == true))
                 MessageBox.Show("solo numeros en este text");
 
-           
-           // piso1 = new Piso();
-            //piso1.Piso();
-            //TextBox textboxevento = (TextBox)sender;
-            //String txtbox1 = textboxevento.Text;
-           // NroPiso = Convert.ToInt32(txtbox1)
-
         }
 
         public static int NumeroPiso (int NroPiso)
@@ -131,9 +127,11 @@ namespace Inmobiliaria
         {
 
             Inmueble oInmueble;
-
+            
             int NumeroPiso = 0;
             int CantidadVentanas = 0;
+            string Tipo = " "; 
+
             double Superficie = Convert.ToDouble(txtSuperficie.Text);
             string Direccion=txtDireccion.Text;
             double PrecioBase= Convert.ToDouble(txtPrecioBase.Text);
@@ -144,15 +142,29 @@ namespace Inmobiliaria
             {
                 NumeroPiso = Convert.ToInt32(textNroPiso.Text);
                 oInmueble = new Piso(NumeroPiso, Superficie, Direccion, PrecioBase, Antiguedad );
-
+                Tipo = "Piso";
 
             }else
             {
                 CantidadVentanas = Convert.ToInt32(textNroVentanas.Text);
                  oInmueble = new Local(CantidadVentanas, Superficie, Direccion, PrecioBase, Antiguedad);
+                Tipo = "Local";
             }
            
             double PrecioFinal = oInmueble.CalculoPrecio();
+            if (PrecioFinal > 0)
+                label1.Text = "El Precio Final del " +Tipo+" es $ " + PrecioFinal;
+        }
+
+        private void txtBox1_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+            
         }
     }
 

@@ -8,10 +8,10 @@ namespace Inmobiliaria
 {
     class Inmueble
     {
-       // Scanner entrada = new Scanner(System.in);
+       
         protected double Superficie;
         protected  string Direccion;
-        protected double PrecioBase, Precio;
+        protected double PrecioBase;
         protected int Antiguedad;
 
 
